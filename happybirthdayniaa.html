@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffcce6, #ffb3d9, #ff99cc, #ff80bf);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            color: #8a2a5e;
+            padding: 20px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 15px 30px rgba(170, 51, 106, 0.2);
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+            animation: bounceIn 1.2s ease-out;
+            border: 8px dashed #ff66b2;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.1);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            color: #e63978;
+            margin-bottom: 25px;
+            font-size: 3rem;
+            text-shadow: 3px 3px 0 #ffb3d9;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            color: #8a2a5e;
+            margin: 20px 0;
+        }
+
+        .birthday-person {
+            font-size: 4rem;
+            margin: 20px 0;
+            animation: wiggle 3s infinite;
+            filter: drop-shadow(0 0 10px rgba(230, 57, 120, 0.5));
+        }
+
+        @keyframes wiggle {
+            0%, 7% { transform: rotate(0); }
+            15% { transform: rotate(-10deg); }
+            20% { transform: rotate(10deg); }
+            25% { transform: rotate(-10deg); }
+            30% { transform: rotate(10deg); }
+            35% { transform: rotate(-10deg); }
+            40%, 100% { transform: rotate(0); }
+        }
+
+        .balloons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .balloon {
+            width: 70px;
+            height: 90px;
+            border-radius: 50%;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .balloon:hover {
+            transform: scale(1.2);
+        }
+
+        .balloon:before {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .balloon:nth-child(1) {
+            background-color: #ff66b2;
+            animation-delay: 0s;
+        }
+
+        .balloon:nth-child(2) {
+            background-color: #ff99cc;
+            animation-delay: 1s;
+        }
+
+        .balloon:nth-child(3) {
+            background-color: #ffb3d9;
+            animation-delay: 2s;
+        }
+
+        .balloon:nth-child(4) {
+            background-color: #e63978;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-25px);
+            }
+        }
+
+        .message {
+            background-color: #ffd1dc;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+            font-weight: bold;
+            border: 4px dashed #ff66b2;
+            font-size: 1.3rem;
+            line-height: 1.6;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: #8a2a5e;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-music {
+            background: linear-gradient(to right, #e63978, #ff66b2);
+            color: white;
+        }
+
+        .btn-video {
+            background: linear-gradient(to right, #ff99cc, #ffb3d9);
+            color: #8a2a5e;
+        }
+
+        .btn-gallery {
+            background: linear-gradient(to right, #ff66b2, #ff80bf);
+            color: white;
+        }
+
+        .media-container {
+            margin: 25px 0;
+            display: none;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(170, 51, 106, 0.2);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 180px;
+            border-radius: 15px;
+            object-fit: cover;
+            transition: transform 0.3s;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .signature {
+            margin-top: 30px;
+            font-style: italic;
+            color: #8a2a5e;
+            font-size: 1.2rem;
+        }
+
+        .cake-container {
+            position: relative;
+            margin: 20px auto;
+            width: 200px;
+            height: 150px;
+        }
+
+        .cake {
+            position: absolute;
+            width: 200px;
+            height: 80px;
+            background: #ffcce6;
+            border-radius: 50% 50% 0 0;
+            bottom: 0;
+            box-shadow: 0 5px 0 #ffb3d9;
+        }
+
+        .cake:before {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 40px;
+            background: #ff99cc;
+            border-radius: 50% 50% 0 0;
+            bottom: 70px;
+            left: 10px;
+        }
+
+        .candle {
+            position: absolute;
+            width: 10px;
+            height: 30px;
+            background: #ff80bf;
+            border-radius: 5px;
+            bottom: 110px;
+            left: 95px;
+            z-index: 1;
+        }
+
+        .flame {
+            position: absolute;
+            width: 15px;
+            height: 25px;
+            background: #ffd1dc;
+            border-radius: 50% 50% 20% 20%;
+            bottom: 135px;
+            left: 92.5px;
+            animation: flicker 1.5s infinite alternate;
+            box-shadow: 0 0 10px #ff99cc, 0 0 20px #ff99cc;
+        }
+
+        @keyframes flicker {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.9; }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 12px;
+            height: 18px;
+            opacity: 0.8;
+            animation: fall 8s linear infinite;
+            z-index: 0;
+        }
+
+        /* Dekorasi bunga tulip */
+        .tulip {
+            position: absolute;
+            z-index: 0;
+        }
+
+        .tulip-1 {
+            top: 10%;
+            left: 5%;
+            animation: sway 8s ease-in-out infinite;
+        }
+
+        .tulip-2 {
+            top: 15%;
+            right: 7%;
+            animation: sway 7s ease-in-out infinite 1s;
+        }
+
+        .tulip-3 {
+            bottom: 10%;
+            left: 8%;
+            animation: sway 9s ease-in-out infinite 0.5s;
+        }
+
+        .tulip-4 {
+            bottom: 15%;
+            right: 5%;
+            animation: sway 6s ease-in-out infinite 1.5s;
+        }
+
+        .tulip-flower {
+            width: 40px;
+            height: 50px;
+            background: #ff66b2;
+            border-radius: 50% 50% 40% 40%;
+            position: relative;
+        }
+
+        .tulip-flower:before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 5px;
+            width: 30px;
+            height: 20px;
+            background: #ff66b2;
+            border-radius: 50% 50% 0 0;
+            transform: rotate(-10deg);
+        }
+
+        .tulip-flower:after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            right: 5px;
+            width: 30px;
+            height: 20px;
+            background: #ff66b2;
+            border-radius: 50% 50% 0 0;
+            transform: rotate(10deg);
+        }
+
+        .tulip-stem {
+            width: 8px;
+            height: 80px;
+            background: #7ec850;
+            margin: 0 auto;
+            border-radius: 4px;
+        }
+
+        .tulip-leaf {
+            width: 25px;
+            height: 15px;
+            background: #7ec850;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px;
+            left: -10px;
+            transform: rotate(-20deg);
+        }
+
+        .tulip-leaf:nth-child(2) {
+            left: auto;
+            right: -10px;
+            transform: rotate(20deg);
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(-5px) rotate(-2deg); }
+            75% { transform: translateX(5px) rotate(2deg); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .message {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+            
+            .balloon {
+                width: 50px;
+                height: 70px;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-item {
+                height: 150px;
+            }
+            
+            .tulip {
+                transform: scale(0.7);
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .birthday-person {
+                font-size: 3rem;
+            }
+            
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .tulip {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Konfeti akan dihasilkan oleh JavaScript -->
+    <div id="confetti-container"></div>
+    
+    <!-- Dekorasi bunga tulip -->
+    <div class="tulip tulip-1">
+        <div class="tulip-flower"></div>
+        <div class="tulip-stem">
+            <div class="tulip-leaf"></div>
+            <div class="tulip-leaf"></div>
+        </div>
+    </div>
+    
+    <div class="tulip tulip-2">
+        <div class="tulip-flower"></div>
+        <div class="tulip-stem">
+            <div class="tulip-leaf"></div>
+            <div class="tulip-leaf"></div>
+        </div>
+    </div>
+    
+    <div class="tulip tulip-3">
+        <div class="tulip-flower"></div>
+        <div class="tulip-stem">
+            <div class="tulip-leaf"></div>
+            <div class="tulip-leaf"></div>
+        </div>
+    </div>
+    
+    <div class="tulip tulip-4">
+        <div class="tulip-flower"></div>
+        <div class="tulip-stem">
+            <div class="tulip-leaf"></div>
+            <div class="tulip-leaf"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Selamat Ulang Tahun!</h1>
+        
+        <div class="birthday-person">🎉🥳🎂</div>
+        
+        <div class="cake-container">
+            <div class="cake"></div>
+            <div class="candle"></div>
+            <div class="flame"></div>
+        </div>
+        
+        <div class="balloons">
+            <div class="balloon" onclick="popBalloon(this)"></div>
+            <div class="balloon" onclick="popBalloon(this)"></div>
+            <div class="balloon" onclick="popBalloon(this)"></div>
+            <div class="balloon" onclick="popBalloon(this)"></div>
+        </div>
+        
+        <div class="message">
+            <p>Happy Birthday Sayangg🎉🎈</p>
+            <p>Semoga sehat terus dan dilancarkan rezekinya, semakin cantik dan semakin sabar sama aku.</p>
+            <p>Selamat karena udah berhasil ngelewatin 21 tahun yang pastinya ga gampang, aku bangga sama kamu.</p>
+        </div>
+        
+        <div class="buttons-container">
+            <button class="btn btn-music" onclick="toggleMusicVideo()">
+                <i class="fas fa-music"></i> Music
+            </button>
+            <button class="btn btn-video" onclick="toggleVideo()">
+                <i class="fas fa-video"></i> Video
+            </button>
+            <button class="btn btn-gallery" onclick="toggleGallery()">
+                <i class="fas fa-images"></i> Foto
+            </button>
+        </div>
+        
+        <div id="music-container" class="media-container">
+            <h2><i class="fas fa-music"></i> Video Musik (Kalau error pencet "Tonton video di YouTube") </h2>
+            
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/u57HBBO1zV4" 
+                        title="YouTube video player" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <p><small>...</small></p>
+        </div>
+        
+        <div id="video-container" class="media-container">
+            <h2><i class="fas fa-video"></i> Video Buat Kamu (Kalau error pencet "Tonton video di YouTube")</h2>
+            
+            <div class="video-wrapper">
+                <iframe width="560" height="315"
+src="https://www.youtube.com/embed/aVwNPs7edpo"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+            </div>
+            <p><small>...</small></p>
+        </div>
+        
+        <div id="gallery-container" class="media-container">
+            <h2><i class="fas fa-images"></i> Foto </h2>
+            <p>Karena kita belum punya foto berdua, jadi aku isi foto kita di Roblox aja :v</p>
+            
+            <div class="gallery">
+                <img src="https://ik.imagekit.io/shavin/Web%20Nia/Selvie2_jrcpXYzWc?updatedAt=1760887216888" alt="Kue ulang tahun" class="gallery-item">
+                <img src="https://ik.imagekit.io/shavin/Web%20Nia/Keren_vjQsM4yNZ?updatedAt=1760887596058" alt="Balon" class="gallery-item">
+                <img src="https://ik.imagekit.io/shavin/Web%20Nia/Gunung_Mx7-rH8la?updatedAt=1760887624481" alt="Pesta" class="gallery-item">
+            </div>
+        </div>
+        
+        <p class="signature">Sehat selalu sayang,<br>Dari aku, teman level 4 mu❤️ (Jadian yuk bub, masa temen level 4 terus)</p>
+    </div>
+
+    <script>
+        // Membuat konfeti
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#ff66b2', '#ff99cc', '#ffb3d9', '#e63978', '#ffcce6', '#ff80bf'];
+            
+            for (let i = 0; i < 80; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDelay = Math.random() * 8 + 's';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = (Math.random() * 12 + 8) + 'px';
+                confetti.style.height = (Math.random() * 18 + 12) + 'px';
+                
+                // Tambahkan bentuk acak untuk konfeti
+                if (Math.random() > 0.7) {
+                    confetti.style.borderRadius = '50%';
+                } else if (Math.random() > 0.5) {
+                    confetti.style.borderRadius = '0';
+                } else {
+                    confetti.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
+                }
+                
+                container.appendChild(confetti);
+            }
+        }
+
+        // Fungsi untuk memunculkan/menyembunyikan video musik
+        function toggleMusicVideo() {
+            const musicContainer = document.getElementById('music-container');
+            const videoContainer = document.getElementById('video-container');
+            const galleryContainer = document.getElementById('gallery-container');
+            
+            // Sembunyikan semua media lainnya
+            videoContainer.style.display = 'none';
+            galleryContainer.style.display = 'none';
+            
+            // Toggle tampilan video musik
+            if (musicContainer.style.display === 'block') {
+                musicContainer.style.display = 'none';
+            } else {
+                musicContainer.style.display = 'block';
+            }
+        }
+
+        // Fungsi untuk memunculkan/menyembunyikan video ucapan
+        function toggleVideo() {
+            const musicContainer = document.getElementById('music-container');
+            const videoContainer = document.getElementById('video-container');
+            const galleryContainer = document.getElementById('gallery-container');
+            
+            // Sembunyikan semua media lainnya
+            musicContainer.style.display = 'none';
+            galleryContainer.style.display = 'none';
+            
+            // Toggle tampilan video ucapan
+            if (videoContainer.style.display === 'block') {
+                videoContainer.style.display = 'none';
+            } else {
+                videoContainer.style.display = 'block';
+            }
+        }
+
+        // Fungsi untuk memunculkan/menyembunyikan galeri
+        function toggleGallery() {
+            const musicContainer = document.getElementById('music-container');
+            const videoContainer = document.getElementById('video-container');
+            const galleryContainer = document.getElementById('gallery-container');
+            
+            // Sembunyikan semua media lainnya
+            musicContainer.style.display = 'none';
+            videoContainer.style.display = 'none';
+            
+            // Toggle tampilan galeri
+            if (galleryContainer.style.display === 'block') {
+                galleryContainer.style.display = 'none';
+            } else {
+                galleryContainer.style.display = 'block';
+            }
+        }
+
+        // Fungsi untuk memecahkan balon
+        function popBalloon(balloon) {
+            balloon.style.animation = 'none';
+            balloon.style.transform = 'scale(1.5)';
+            balloon.style.opacity = '0.5';
+            
+            // Efek suara (dalam implementasi nyata, Anda akan menambahkan file audio)
+            // new Audio('pop-sound.mp3').play();
+            
+            setTimeout(() => {
+                balloon.style.display = 'none';
+            }, 300);
+            
+            // Tambahkan efek konfeti ketika balon dipecahkan
+            createConfetti();
+        }
+
+        // Jalankan efek setelah halaman dimuat
+        window.onload = function() {
+            createConfetti();
+        };
+    </script>
+</body>
+</html>
